@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jars">
+    <CLASSES>
+      <root url="file://D:/iFogSim-main/iFogSim-main/jars" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://D:/iFogSim-main/iFogSim-main/jars" recursive="false" />
+  </library>
+</component>
