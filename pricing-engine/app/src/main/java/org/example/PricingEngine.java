@@ -7,28 +7,27 @@ public class PricingEngine {
         String customerType = "VIP";
         String discountCode = "SAVE10";
 
+        // حساب Subtotal
         double subtotal = 0;
         for (int i = 0; i < prices.length; i++) {
             subtotal += prices[i] * quantities[i];
         }
 
-        double discount = 0;
-        if (discountCode.equals("SAVE10")) {
-            discount = subtotal * 0.10;
-        } else if (discountCode.equals("SAVE20")) {
-            discount = subtotal * 0.20;
-        }
+        // استخدام الخدمة الجديدة للخصومات
+        DiscountService discountService = new DiscountService();
+        double discount = discountService.calculateDiscount(subtotal, customerType, discountCode);
 
-        if (customerType.equals("VIP")) {
-            discount += subtotal * 0.05;
-        }
-
+        // حساب الضريبة
         double tax = (subtotal - discount) * 0.19;
+
+        // السعر النهائي
         double finalPrice = subtotal - discount + tax;
 
+        // المخرجات
         System.out.println("Subtotal: " + subtotal);
         System.out.println("Discount: " + discount);
         System.out.println("Tax: " + tax);
         System.out.println("Final Price: " + finalPrice);
     }
 }
+
