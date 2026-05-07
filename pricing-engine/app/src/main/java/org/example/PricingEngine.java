@@ -13,12 +13,13 @@ public class PricingEngine {
             subtotal += prices[i] * quantities[i];
         }
 
-        // استخدام الخدمة الجديدة للخصومات
+        // استخدام خدمة الخصم
         DiscountService discountService = new DiscountService();
         double discount = discountService.calculateDiscount(subtotal, customerType, discountCode);
 
-        // حساب الضريبة
-        double tax = (subtotal - discount) * 0.19;
+        // استخدام خدمة الضريبة
+        TaxService taxService = new TaxService();
+        double tax = taxService.calculateTax(subtotal, discount);
 
         // السعر النهائي
         double finalPrice = subtotal - discount + tax;
@@ -30,4 +31,3 @@ public class PricingEngine {
         System.out.println("Final Price: " + finalPrice);
     }
 }
-
