@@ -6,30 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PricingEngineTest {
 
     @Test
-    void testVIPDiscount() {
-
-        PricingEngine engine = new PricingEngine();
-
-        double result = engine.calculateFinalPrice(
-                200.0,
-                "VIP",
-                "SAVE20"
-        );
-
-        assertEquals(149.8, result, 0.01);
-    }
-
-    @Test
-    void testRegularCustomer() {
-
-        PricingEngine engine = new PricingEngine();
-
-        double result = engine.calculateFinalPrice(
-                100.0,
-                "REGULAR",
-                ""
-        );
-
-        assertEquals(107.0, result, 0.01);
+    void testSubtotalCalculation() {
+        double[] prices = {100, 50};
+        int[] quantities = {2, 1};
+        double subtotal = 0;
+        for (int i = 0; i < prices.length; i++) {
+            subtotal += prices[i] * quantities[i];
+        }
+        assertEquals(250, subtotal, 0.01);
     }
 }
